@@ -1,11 +1,23 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import "../styles/global.css";
+const posts = await getCollection('blog');
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle = "Home"
+const pageDes = "This is the home page. Check out my latest blog posts and projects."
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<h1 class="main-contents">{pageTitle}</h1>
+		<p class="main-contents">{pageDes}</p>
+		<ul class="main-contents">
+		  <li><a href="/blog">Blog</a></li>
+		  <li><a href="/projects">Projects</a></li>
+		</ul>
+	  </main>
 </Layout>
+
+

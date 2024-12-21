@@ -1,0 +1,22 @@
+.main-contents {
+    margin-left: 10vw;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+.main-p {
+    width: 70vw;
+}
+
+article {
+    border-bottom: 1px solid black;
+    width: 80vw;
+    padding-bottom: 1rem;
+}
+
+a:visited {
+    color: black;
+}

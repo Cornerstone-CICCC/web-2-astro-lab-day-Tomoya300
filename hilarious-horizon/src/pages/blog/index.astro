@@ -1,0 +1,35 @@
+---
+// blog index.astro
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import "../../styles/global.css";
+const posts = await getCollection('blog');
+
+const pageTitle = "Lazy Blog"
+const pageDes = "Welcome to my Lazy Blog. I upload anything I want irregulary. Don't expect daily posting xD."
+---
+
+<Layout>
+    <!-- <Header /> -->
+    <main>
+        <h1 class="main-contents">{pageTitle}</h1>
+        <p class="main-contents">{pageDes}</p>
+		<ul class="main-contents">
+			{posts.map(post => (
+                    <article>
+                        <h3>{post.data.title}</h3>
+                        <p>Published: {new Date(post.data.date).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
+                        <em>{post.data.author}</em>
+                        <div>
+                        </div>
+                        <div>
+                            <a href={`/blog/${post.data.id}`}>Read more...</a>
+                        </div>
+                    </article>
+			    )
+            )}
+		</ul>
+       
+    </main>
+    <!-- <Footer /> -->
+</Layout>
